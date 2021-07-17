@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Client(models.Model):
     fullname = models.CharField(max_length=50)
-    nit = models.CharField(max_length=14)
+    nit = models.CharField(max_length=14, default="0")
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
@@ -31,7 +31,7 @@ class Reservation(models.Model):
 
     date = models.DateTimeField()
     stay_days = models.IntegerField(default=1)
-    paid_amount = models.DecimalField(decimal_places=2, max_digits=10)
+    paid_amount = models.DecimalField(default=0, decimal_places=2, max_digits=10)
 
     def __str__(self):
         return f"{self.client.fullname} {self.date}"
